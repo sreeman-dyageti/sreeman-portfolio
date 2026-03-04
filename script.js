@@ -11,19 +11,21 @@ window.addEventListener('scroll', () => {
     nav.style.borderBottom = 'none';
   }
 });
-// ── Hamburger menu toggle
+// Hamburger menu toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks  = document.getElementById('navLinks');
 
 navToggle.addEventListener('click', () => {
   navToggle.classList.toggle('open');
   navLinks.classList.toggle('open');
+  document.body.classList.toggle('menu-open'); 
 });
 
-// close menu when a link is clicked
+// close links
 document.querySelectorAll('.nav-close').forEach(link => {
   link.addEventListener('click', () => {
     navToggle.classList.remove('open');
     navLinks.classList.remove('open');
+    document.body.classList.remove('menu-open');
   });
 });
