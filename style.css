@@ -77,6 +77,94 @@ nav {
 .nav-links a:hover::after {
   width: 100%;
 }
+
+/* ── HAMBURGER BUTTON ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 200;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* hamburger → X animation */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── MOBILE NAV ── */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--ink);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    z-index: 150;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--bg);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+}
+/* hide mobile list on desktop */
+.nav-mobile {
+  display: none;
+}
+
+/* hide desktop list on mobile */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  .nav-mobile {
+    display: none; /* hidden until toggled */
+  }
+  .nav-mobile.open {
+    display: flex;
+  }
+}
+
 /* HERO */
 .hero{
     min-height: 100vh;
@@ -152,3 +240,148 @@ nav {
   transform: translateX(5px);
 }
 
+/* ── WORK ── */
+.work {
+  padding: 8rem 3rem;
+  background: var(--bg);
+}
+
+.work-header {
+  margin-bottom: 3rem;
+}
+
+.work-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.work-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+.work-title .accent {
+  color: var(--accent);
+}
+
+/* ── GRID ── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.work-item.wide { grid-column: span 7; }
+.work-item.tall  { grid-column: span 5; }
+
+/* ── CARD ── */
+.work-item {
+  background: var(--card);
+  border-radius: 1rem;
+  min-height: 320px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
+.work-item:hover {
+  background: var(--ink);
+  transform: scale(1.02);
+}
+
+.work-number {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: rgba(0,0,0,0.08);
+  line-height: 1;
+  transition: color 0.4s ease;
+}
+
+.work-item:hover .work-number {
+  color: rgba(255,255,255,0.06);
+}
+
+.work-tag {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  transition: color 0.4s ease;
+}
+
+.work-name {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--ink);
+  text-transform: uppercase;
+  line-height: 1;
+  transition: color 0.4s ease;
+}
+
+.work-desc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-top: 0.6rem;
+  transition: color 0.4s ease;
+}
+
+.work-link {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-decoration: none;
+  transition: letter-spacing 0.3s ease;
+}
+
+.work-link:hover {
+  letter-spacing: 0.18em;
+}
+
+/* flip text white on dark card */
+.work-item:hover .work-name,
+.work-item:hover .work-desc,
+.work-item:hover .work-tag {
+  color: rgba(255,255,255,0.75);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .work {
+    padding: 5rem 1.5rem;
+  }
+  .work-item.wide,
+  .work-item.tall {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    padding: 6rem 1.5rem 3rem;
+    min-height: 100svh; 
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 13vw, 6rem);
+  }
+}

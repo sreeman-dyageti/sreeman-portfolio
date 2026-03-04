@@ -11,3 +11,19 @@ window.addEventListener('scroll', () => {
     nav.style.borderBottom = 'none';
   }
 });
+// ── Hamburger menu toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+
+// close menu when a link is clicked
+document.querySelectorAll('.nav-close').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
+});
