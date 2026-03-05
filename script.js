@@ -19,6 +19,14 @@ navToggle.addEventListener('click', () => {
   navToggle.classList.toggle('open');
   navLinks.classList.toggle('open');
   document.body.classList.toggle('menu-open'); 
+
+  const spans = navToggle.querySelectorAll('span');
+  if (navLinks.classList.contains('open')) {
+    spans.forEach(s => s.style.background = '#f5f0e8'); // white-ish on dark menu
+  } else {
+    spans.forEach(s => s.style.background = '#1a1a1a'); // dark on light bg
+  }
+
 });
 
 // close links
