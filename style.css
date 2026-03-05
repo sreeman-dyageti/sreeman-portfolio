@@ -363,3 +363,141 @@ nav {
     font-size: clamp(3rem, 13vw, 6rem);
   }
 }
+
+/* ── ABOUT ── */
+.about {
+  padding: 8rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.about-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.about-title .accent {
+  color: var(--accent);
+}
+
+.about-body {
+  margin-top: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 480px;
+}
+
+/* ── SKILL PILLS ── */
+.about-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.skill-pill {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill-pill:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* ── PHOTO SIDE ── */
+.about-image {
+  position: relative;
+}
+
+.about-img-inner {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--card);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-placeholder {
+  font-size: 8rem;
+}
+
+/* ── SPINNING BADGE ── */
+.about-badge {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  width: 110px;
+  height: 110px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.65rem;
+  color: var(--bg);
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.4;
+  animation: spin-badge 10s linear infinite;
+}
+
+@keyframes spin-badge {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── ABOUT MOBILE ── */
+@media (max-width: 768px) {
+  .about {
+    grid-template-columns: 1fr;
+    padding: 5rem 1.5rem;
+    gap: 3rem;
+  }
+
+  .about-image {
+    order: -1; /* photo goes above text on mobile */
+  }
+
+  .about-img-inner {
+    aspect-ratio: 1/1; /* square on mobile */
+  }
+
+  .about-badge {
+    bottom: -1rem;
+    right: -0.5rem;
+    width: 90px;
+    height: 90px;
+    font-size: 0.6rem;
+  }
+}

@@ -22,9 +22,9 @@ navToggle.addEventListener('click', () => {
 
   const spans = navToggle.querySelectorAll('span');
   if (navLinks.classList.contains('open')) {
-    spans.forEach(s => s.style.background = '#f5f0e8'); // white-ish on dark menu
+    spans.forEach(s => s.style.background = '#f5f0e8'); 
   } else {
-    spans.forEach(s => s.style.background = '#1a1a1a'); // dark on light bg
+    spans.forEach(s => s.style.background = '#1a1a1a'); 
   }
 
 });
