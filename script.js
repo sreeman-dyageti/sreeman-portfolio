@@ -37,6 +37,86 @@ heroTl
     ease: 'back.out(1.7)'  
   }, '-=0.2');
 
+//WORK CARDS — fade up one by one as you scroll
+gsap.from('.work-item', {
+  opacity: 0,
+  y: 80,
+  duration: 0.8,
+  stagger: 0.15,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.work-grid',
+    start: 'top 80%',   
+    toggleActions: 'play reverse play reverse'
+  }
+});
+
+// WORK TITLE — slides in from left
+gsap.from('.work-title', {
+  opacity: 0,
+  x: -60,
+  duration: 0.8,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.work',
+    start: 'top 80%',
+    toggleActions: 'play reverse play reverse'
+  }
+});
+
+//ABOUT TEXT — slides in from left
+gsap.from('.about-text', {
+  opacity: 0,
+  x: -80,
+  duration: 0.9,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.about',
+    start: 'top 75%',
+    toggleActions: 'play reverse play reverse'
+  }
+});
+
+// ABOUT IMAGE — slides in from right
+gsap.from('.about-image', {
+  opacity: 0,
+  x: 80,
+  duration: 0.9,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.about',
+    start: 'top 75%',
+    toggleActions: 'play reverse play reverse'
+  }
+});
+
+//CONTACT TITLE — fades up with scale
+gsap.from('.contact-title', {
+  opacity: 0,
+  y: 60,
+  scale: 0.95,
+  duration: 1,
+  ease: 'power4.out',
+  scrollTrigger: {
+    trigger: '.contact',
+    start: 'top 75%',
+    toggleActions: 'play reverse play reverse'
+  }
+});
+
+// CONTACT EMAIL — fades in after title
+gsap.from('.contact-email', {
+  opacity: 0,
+  y: 30,
+  duration: 0.7,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '.contact',
+    start: 'top 65%',
+    toggleActions: 'play reverse play reverse'
+  }
+});
+
 
 // Nav background on scroll
 window.addEventListener('scroll', () => {
@@ -75,5 +155,8 @@ document.querySelectorAll('.nav-close').forEach(link => {
     navToggle.classList.remove('open');
     navLinks.classList.remove('open');
     document.body.classList.remove('menu-open');
+
+    const spans = navToggle.querySelectorAll('span');
+    spans.forEach(s => s.style.background = '#1a1a1a');
   });
 });

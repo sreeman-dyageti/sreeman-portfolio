@@ -15,7 +15,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html, body {
+  overflow-x: hidden;
+}
 body {
   background: var(--bg);
   color: var(--ink);
@@ -23,6 +25,7 @@ body {
 body.menu-open {
   overflow: hidden;
 }
+
 /* ── NAV ── */
 nav {
   position: fixed;
@@ -32,7 +35,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 3rem;
-  z-index: 100;
+  z-index: 400;
   transition: background 0.4s ease, border 0.4s ease;
 }
 
@@ -225,6 +228,7 @@ nav {
 .work {
   padding: 8rem 3rem;
   background: var(--bg);
+  overflow: hidden;
 }
 
 .work-header {
@@ -346,27 +350,6 @@ nav {
   color: rgba(255,255,255,0.75);
 }
 
-/* ── MOBILE ── */
-@media (max-width: 768px) {
-  .work {
-    padding: 5rem 1.5rem;
-  }
-  .work-item.wide,
-  .work-item.tall {
-    grid-column: 1 / -1;
-  }
-}
-@media (max-width: 768px) {
-  .hero {
-    padding: 6rem 1.5rem 3rem;
-    min-height: 100svh; 
-  }
-
-  .hero-title {
-    font-size: clamp(3rem, 13vw, 6rem);
-  }
-}
-
 /* ── ABOUT ── */
 .about {
   padding: 8rem 3rem;
@@ -374,6 +357,7 @@ nav {
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: center;
+  overflow: hidden;
 }
 
 .about-eyebrow {
@@ -478,31 +462,6 @@ nav {
 @keyframes spin-badge {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
-}
-
-/* ── ABOUT MOBILE ── */
-@media (max-width: 768px) {
-  .about {
-    grid-template-columns: 1fr;
-    padding: 5rem 1.5rem;
-    gap: 3rem;
-  }
-
-  .about-image {
-    order: -1; 
-  }
-
-  .about-img-inner {
-    aspect-ratio: 1/1; 
-  }
-
-  .about-badge {
-    bottom: -1rem;
-    right: -0.5rem;
-    width: 90px;
-    height: 90px;
-    font-size: 0.6rem;
-  }
 }
 
 /* ── CONTACT ── */
@@ -661,9 +620,66 @@ footer {
 }
 
 .footer-links a:hover { color: var(--bg); }
+/* ── SOCIAL LINK ICON COLORS ON HOVER ── */
+/* GitHub → white hover */
+.social-link:nth-child(1):hover,
+.footer-social:nth-child(1):hover {
+  color: #ffffff;
+}
 
-/* ── CONTACT + FOOTER MOBILE ── */
+/* LinkedIn → LinkedIn blue */
+.social-link:nth-child(2):hover,
+.footer-social:nth-child(2):hover {
+  color: #0a66c2;
+}
+
+/* Instagram → gradient trick via filter */
+.social-link:nth-child(3):hover,
+.footer-social:nth-child(3):hover {
+  color: #e1306c;  
+}
+
+/* ── ALL MOBILE ── */
 @media (max-width: 768px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-desktop { display: none; }
+  .nav-toggle  { display: flex; }
+
+  .hero {
+    padding: 6rem 1.5rem 3rem;
+    min-height: 100svh;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 13vw, 6rem);
+  }
+
+  .work {
+    padding: 5rem 1.5rem;
+  }
+  .work-item.wide,
+  .work-item.tall {
+    grid-column: 1 / -1;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    padding: 5rem 1.5rem;
+    gap: 3rem;
+  }
+  .about-image {
+    order: -1;
+  }
+  .about-img-inner {
+    aspect-ratio: 1/1;
+  }
+  .about-badge {
+    bottom: -1rem;
+    right: -0.5rem;
+    width: 90px;
+    height: 90px;
+    font-size: 0.6rem;
+  }
+
   .contact {
     padding: 6rem 1.5rem;
   }
