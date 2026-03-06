@@ -486,11 +486,11 @@ nav {
   }
 
   .about-image {
-    order: -1; /* photo goes above text on mobile */
+    order: -1; 
   }
 
   .about-img-inner {
-    aspect-ratio: 1/1; /* square on mobile */
+    aspect-ratio: 1/1; 
   }
 
   .about-badge {
