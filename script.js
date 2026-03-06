@@ -1,3 +1,43 @@
+// REGISTER PLUGINS
+gsap.registerPlugin(ScrollTrigger);
+
+// HERO LOAD ANIMATION
+// This runs the moment the page loads
+const heroTl = gsap.timeline({ delay: 0.2 });
+
+heroTl
+  // eyebrow fades in
+  .from('.hero-eyebrow', {
+    opacity: 0,
+    y: 20,
+    duration: 0.6,
+    ease: 'power3.out'
+  })
+  //each title line slides up one by one
+  .from('.hero-title .line', {
+    opacity: 0,
+    y: '100%',
+    duration: 0.8,
+    stagger: 0.12,       
+    ease: 'power4.out'
+  }, '-=0.3')            
+  //subtitle fades in
+  .from('.hero-sub', {
+    opacity: 0,
+    y: 30,
+    duration: 0.6,
+    ease: 'power3.out'
+  }, '-=0.3')
+  // button pops in
+  .from('.hero-cta', {
+    opacity: 0,
+    y: 20,
+    scale: 0.95,
+    duration: 0.5,
+    ease: 'back.out(1.7)'  
+  }, '-=0.2');
+
+
 // Nav background on scroll
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');

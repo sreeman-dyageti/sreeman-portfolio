@@ -166,10 +166,13 @@ nav {
   font-size: clamp(3rem, 9vw, 8rem); 
     line-height: 0.9;
     text-transform: uppercase;
+    overflow: hidden;
 }
 
 .hero-title .line{
     display: block;
+    overflow: hidden; 
+    padding-bottom: 0.05em;
 }
 
 
