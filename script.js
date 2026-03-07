@@ -44,6 +44,7 @@ gsap.from('.work-item', {
   duration: 0.8,
   stagger: 0.15,
   ease: 'power3.out',
+  immediateRender: false,
   scrollTrigger: {
     trigger: '.work-grid',
     start: 'top 80%',   
@@ -57,6 +58,7 @@ gsap.from('.work-title', {
   x: -60,
   duration: 0.8,
   ease: 'power3.out',
+   immediateRender: false,
   scrollTrigger: {
     trigger: '.work',
     start: 'top 80%',
@@ -70,6 +72,7 @@ gsap.from('.about-text', {
   x: -80,
   duration: 0.9,
   ease: 'power3.out',
+   immediateRender: false,
   scrollTrigger: {
     trigger: '.about',
     start: 'top 75%',
@@ -83,6 +86,7 @@ gsap.from('.about-image', {
   x: 80,
   duration: 0.9,
   ease: 'power3.out',
+   immediateRender: false,
   scrollTrigger: {
     trigger: '.about',
     start: 'top 75%',
@@ -97,6 +101,7 @@ gsap.from('.contact-title', {
   scale: 0.95,
   duration: 1,
   ease: 'power4.out',
+   immediateRender: false,
   scrollTrigger: {
     trigger: '.contact',
     start: 'top 75%',
@@ -110,6 +115,7 @@ gsap.from('.contact-email', {
   y: 30,
   duration: 0.7,
   ease: 'power3.out',
+   immediateRender: false,
   scrollTrigger: {
     trigger: '.contact',
     start: 'top 65%',
@@ -130,6 +136,47 @@ window.addEventListener('scroll', () => {
     nav.style.backdropFilter = 'none';
     nav.style.borderBottom = 'none';
   }
+});
+
+// ── CUSTOM CURSOR
+const cursorDot  = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+
+window.addEventListener('mousemove', e => {
+  // dot follows instantly
+  gsap.to(cursorDot, {
+    x: e.clientX,
+    y: e.clientY,
+    duration: 0.1
+  });
+  // ring follows with slight lag
+  gsap.to(cursorRing, {
+    x: e.clientX,
+    y: e.clientY,
+    duration: 0.35
+  });
+});
+
+// grow ring on hoverable elements
+document.querySelectorAll('a, button, .work-item, .skill-pill').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    gsap.to(cursorRing, {
+      width: 56,
+      height: 56,
+      borderColor: '#ff4d1c',
+      duration: 0.3
+    });
+    gsap.to(cursorDot, { scale: 0, duration: 0.3 });
+  });
+  el.addEventListener('mouseleave', () => {
+    gsap.to(cursorRing, {
+      width: 36,
+      height: 36,
+      borderColor: '#1a1a1a',
+      duration: 0.3
+    });
+    gsap.to(cursorDot, { scale: 1, duration: 0.3 });
+  });
 });
 // Hamburger menu toggle
 const navToggle = document.getElementById('navToggle');
