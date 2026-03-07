@@ -36,6 +36,42 @@ heroTl
     duration: 0.5,
     ease: 'back.out(1.7)'  
   }, '-=0.2');
+// ── LIGHTBOX
+const lightbox      = document.getElementById('lightbox');
+const lightboxImg   = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+
+// open function — called by onclick on art-item
+function openLightbox(item) {
+  const img = item.querySelector('img');
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// close on X button
+lightboxClose.addEventListener('click', (e) => {
+  e.stopPropagation();
+  closeLightbox();
+});
+
+// close on background click
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox || e.target === lightboxImg) {
+    closeLightbox();
+  }
+});
+
+// close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
 
 //WORK CARDS — fade up one by one as you scroll
 gsap.from('.work-item', {

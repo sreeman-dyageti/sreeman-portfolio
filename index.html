@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+</div>
+
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <nav>
@@ -147,35 +153,27 @@
 
   <div class="art-grid">
 
-    <div class="art-item">
-      <img src="assets/arts/6feb26.jpeg" alt="Charcoal drawing 1" loading="lazy" />
-      <div class="art-overlay">
-        <span>Charcoal on paper</span>
-      </div>
-    </div>
-
-    <div class="art-item">
-      <img src="assets/arts/13feb2021.jpeg" alt="Charcoal drawing 2" loading="lazy" />
-      <div class="art-overlay">
-        <span>Charcoal on paper</span>
-      </div>
-    </div>
-
-    <div class="art-item">
-      <img src="assets/arts/15june2025.jpeg" alt="Charcoal drawing 3" loading="lazy" />
-      <div class="art-overlay">
-        <span>Charcoal on paper</span>
-      </div>
-    </div>
-
-    <div class="art-item">
-      <img src="assets/arts/17April2025.jpeg" alt="Charcoal drawing 4" loading="lazy" />
-      <div class="art-overlay">
-        <span>Charcoal on paper</span>
-      </div>
-    </div>
-
+  <div class="art-item" onclick="openLightbox(this)">
+    <img src="assets/arts/6feb26.jpeg" alt="Charcoal drawing 1" />
+    <div class="art-overlay"><span>Charcoal on paper</span></div>
   </div>
+
+  <div class="art-item" onclick="openLightbox(this)">
+    <img src="assets/arts/13feb2021.jpeg" alt="Charcoal drawing 2" />
+    <div class="art-overlay"><span>Charcoal on paper</span></div>
+  </div>
+
+  <div class="art-item" onclick="openLightbox(this)">
+    <img src="assets/arts/15june2025.jpeg" alt="Charcoal drawing 3" />
+    <div class="art-overlay"><span>Charcoal on paper</span></div>
+  </div>
+
+  <div class="art-item" onclick="openLightbox(this)">
+    <img src="assets/arts/17April2025.jpeg" alt="Charcoal drawing 4" />
+    <div class="art-overlay"><span>Charcoal on paper</span></div>
+  </div>
+
+</div>
 
 </section>
 
