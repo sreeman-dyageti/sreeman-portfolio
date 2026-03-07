@@ -463,6 +463,119 @@ nav {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+/* ── ART SECTION ── */
+.art {
+  padding: 8rem 3rem;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.art-header {
+  margin-bottom: 3rem;
+}
+
+.art-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.5rem;
+}
+
+.art-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  text-transform: uppercase;
+  line-height: 0.9;
+  color: var(--bg);
+}
+
+.art-title .accent {
+  color: var(--accent);
+}
+
+.art-sub {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 0.8rem;
+  max-width: 400px;
+  line-height: 1.7;
+}
+
+/* ── ART GRID ── */
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+/* tall first item  */
+.art-item:nth-child(1) { grid-row: span 2; }
+
+.art-item {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  cursor: pointer;
+  background: #2a2a2a;
+}
+
+.art-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+  filter: grayscale(20%);       
+}
+
+.art-item:hover img {
+  transform: scale(1.05);
+  filter: grayscale(0%);         
+}
+
+/* ── OVERLAY ── */
+.art-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.7) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+
+.art-item:hover .art-overlay {
+  opacity: 1;
+}
+
+.art-overlay span {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── ART MOBILE ── */
+@media (max-width: 768px) {
+  .art {
+    padding: 5rem 1.5rem;
+  }
+  .art-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .art-item:nth-child(1) {
+    grid-row: span 1;   
+  }
+}
 
 /* ── CONTACT ── */
 .contact {
