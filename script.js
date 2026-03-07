@@ -65,7 +65,33 @@ gsap.from('.work-title', {
     toggleActions: 'play reverse play reverse'
   }
 });
+// ── ART SECTION
+gsap.from('.art-title', {
+  opacity: 0,
+  x: -60,
+  duration: 0.8,
+  ease: 'power3.out',
+  immediateRender: false,
+  scrollTrigger: {
+    trigger: '.art',
+    start: 'top 80%',
+    toggleActions: 'play reverse play reverse'
+  }
+});
 
+gsap.from('.art-item', {
+  opacity: 0,
+  y: 60,
+  duration: 0.7,
+  stagger: 0.12,
+  ease: 'power3.out',
+  immediateRender: false,
+  scrollTrigger: {
+    trigger: '.art-grid',
+    start: 'top 80%',
+    toggleActions: 'play reverse play reverse'
+  }
+});
 //ABOUT TEXT — slides in from left
 gsap.from('.about-text', {
   opacity: 0,
