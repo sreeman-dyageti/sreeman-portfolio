@@ -215,7 +215,7 @@ window.addEventListener('mousemove', e => {
   gsap.to(cursorRing, {
     x: e.clientX,
     y: e.clientY,
-    duration: 0.35
+    duration: 0.25
   });
 });
 
