@@ -2,7 +2,7 @@
 
 A bold, animated personal portfolio built from scratch with pure HTML, CSS, and JavaScript.
 
-**Live Site:** [sreeman-dyageti.github.io/portfolio](https://sreeman-dyageti.github.io/portfolio)
+**Live Site:** [https://sreeman-dyageti.github.io/sreeman-portfolio/)
 
 ---
 
