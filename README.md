@@ -99,7 +99,7 @@ Or use VS Code Live Server for hot reload.
 
 - **Email:** dyagetisaisreeman@gmail.com
 - **GitHub:** [@sreeman-dyageti](https://github.com/sreeman-dyageti)
-- **LinkedIn:** [sreeman-d](www.linkedin.com/in/saisreemandyageti)
+- **LinkedIn:** [@sreeman-d](https://www.linkedin.com/in/saisreemandyageti)
 - **Instagram:** [@sreeman_d](https://www.instagram.com/sreeman_d/)
 
 ---

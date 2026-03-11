@@ -3,7 +3,445 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bookshelf — Sreeman Dyageti</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+    :root {
+      --bg: #f5f0e8;
+      --ink: #1a1a1a;
+      --accent: #ff4d1c;
+      --muted: #9b9080;
+      --card: #ece6da;
+      --font-display: "Bebas Neue", sans-serif;
+      --font-body: "DM Sans", sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* ── CURSOR ── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+    }
+    @media (max-width: 768px) {
+      .cursor-dot, .cursor-ring { display: none; }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      z-index: 400;
+      transition: background 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(245,240,232,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-back {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back .arrow { transition: transform 0.2s ease; }
+    .nav-back:hover .arrow { transform: translateX(-4px); }
+
+    /* ── HERO ── */
+    .project-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+    }
+
+    .project-hero::before {
+      content: 'BOOKSHELF';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 18vw, 20rem);
+      color: rgba(255,255,255,0.03);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-meta {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.2s;
+    }
+    .hero-number {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    .hero-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 12vw, 11rem);
+      line-height: 0.9;
+      color: var(--bg);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+    .project-title .accent { color: var(--accent); }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.6s;
+    }
+    .hero-desc {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: rgba(255,255,255,0.55);
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .hero-links {
+      display: flex; gap: 1rem; flex-shrink: 0;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent);
+      color: white;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 100px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .btn-primary:hover { transform: scale(1.04); background: #e63d0a; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.2s ease;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.6);
+      color: white;
+    }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots {
+      padding: 6rem 3rem;
+      background: var(--card);
+    }
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+    .screenshot-item {
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: var(--ink);
+      cursor: zoom-in;
+      position: relative;
+    }
+    .screenshot-item:nth-child(1) {
+      grid-row: span 2;
+    }
+    .screenshot-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.3s ease;
+      filter: brightness(0.95);
+    }
+    .screenshot-item:hover img {
+      transform: scale(1.03);
+      filter: brightness(1);
+    }
+    .screenshot-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex; align-items: flex-end;
+      padding: 1rem 1.2rem;
+      pointer-events: none;
+    }
+    .screenshot-item:hover .screenshot-overlay { opacity: 1; }
+    .screenshot-overlay span {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ── DETAILS ── */
+    .details {
+      padding: 6rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    /* .detail-block { } */
+    .detail-block h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .detail-block h2 .accent { color: var(--accent); }
+    .detail-block p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #3a3530;
+    }
+
+    /* ── FEATURES ── */
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #3a3530;
+      padding: 1rem 1.2rem;
+      background: var(--card);
+      border-radius: 0.5rem;
+      border-left: 3px solid var(--accent);
+    }
+    .feature-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.55rem;
+    }
+
+    /* ── TECH STACK ── */
+    .tech-section {
+      padding: 5rem 3rem;
+      background: var(--ink);
+    }
+    .tech-section .section-label { color: rgba(255,255,255,0.3); }
+    .tech-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--bg);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .tech-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .tech-card:hover {
+      background: rgba(255,77,28,0.08);
+      border-color: rgba(255,77,28,0.3);
+    }
+    .tech-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--bg);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+    .tech-role {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── CTA ── */
+    .project-cta {
+      padding: 6rem 3rem;
+      background: var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cta-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      color: white;
+      text-transform: uppercase;
+      line-height: 0.95;
+    }
+    .cta-text p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.8rem;
+    }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: white;
+      color: var(--accent);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      transition: transform 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-white:hover { transform: scale(1.04); }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.93);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: 90vw; max-height: 90vh;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      animation: lightbox-in 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: default;
+    }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: white; font-size: 1rem;
+      width: 40px; height: 40px;
+      border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease; z-index: 9001;
+    }
+    .lightbox-close:hover { background: var(--accent); border-color: var(--accent); }
+
+    @keyframes lightbox-in {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .project-hero { padding: 7rem 1.5rem 3rem; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .hero-links { flex-wrap: wrap; }
+      .screenshots { padding: 4rem 1.5rem; }
+      .screenshots-grid { grid-template-columns: 1fr; }
+      .screenshot-item:nth-child(1) { grid-row: span 1; }
+      .details { padding: 4rem 1.5rem; grid-template-columns: 1fr; gap: 3rem; }
+      .tech-section { padding: 4rem 1.5rem; }
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-cta { padding: 4rem 1.5rem; flex-direction: column; gap: 2rem; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
 
@@ -58,15 +496,15 @@
   <p class="section-label">— Screenshots</p>
   <div class="screenshots-grid">
     <div class="screenshot-item" onclick="openLightbox(this)">
-      <img src="../assets/bookshelf/ss1.png" alt="Bookshelf library view" />
+      <img src="/sreeman-portfolio/assets/project_imgs/bookshelf/library_view.png" alt="Bookshelf library view" />
       <div class="screenshot-overlay"><span>Library View</span></div>
     </div>
     <div class="screenshot-item" onclick="openLightbox(this)">
-      <img src="../assets/bookshelf/ss2.png" alt="Add a book form" />
+      <img src="/sreeman-portfolio/assets/project_imgs/bookshelf/Add_book.png" alt="Add a book form" />
       <div class="screenshot-overlay"><span>Add a Book</span></div>
     </div>
     <div class="screenshot-item" onclick="openLightbox(this)">
-      <img src="../assets/bookshelf/ss3.png" alt="Edit book form" />
+      <img src="/sreeman-portfolio/assets/project_imgs/bookshelf/edit_boOk.png" alt="Edit book form" />
       <div class="screenshot-overlay"><span>Edit Book</span></div>
     </div>
   </div>
