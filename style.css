@@ -380,6 +380,13 @@ nav {
   color: var(--accent);
 }
 
+.about-photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
 .about-body {
   margin-top: 1.5rem;
   font-family: var(--font-body);
