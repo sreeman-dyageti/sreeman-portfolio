@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookshelf — Sreeman Dyageti</title>
+    <title>Artfolio — Sreeman Dyageti</title>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
@@ -98,7 +98,7 @@
     }
 
     .project-hero::before {
-      content: 'BOOKSHELF';
+      content: 'ART GALLERY';
       position: absolute;
       top: 35%; left: 50%;
       transform: translate(-50%, -50%);
@@ -467,24 +467,24 @@
 <!-- HERO -->
 <section class="project-hero">
   <div class="hero-meta">
-    <span class="hero-number">02</span>
+    <span class="hero-number">03</span>
     <span class="hero-tag">Node.js</span>
     <span class="hero-tag">PostgreSQL</span>
-    <span class="hero-tag">Open Library API</span>
+    <span class="hero-tag">Cloudinary</span>
   </div>
-  <h1 class="project-title">Book<span class="accent">shelf</span></h1>
+  <h1 class="project-title">Art<span class="accent">Gallery</span></h1>
   <div class="hero-bottom">
     <p class="hero-desc">
-      A personal book tracking app where you add books by ISBN,
-      auto-fetch covers from Open Library, write reviews, and sort
-      your reading history — all backed by a relational PostgreSQL database.
+      Artfolio – An artist-focused web platform to showcase creative processes step by step,
+      build portfolios, and explore artwork by creators. Built with Node.js, Express, Cloudinary
+      PostgreSQL, EJS, and CSS.
     </p>
     <div class="hero-links">
-      <a href="https://github.com/sreeman-dyageti/book-shelf_project" target="_blank" class="btn-ghost">
+      <a href="https://github.com/sreeman-dyageti/art_gallery" target="_blank" class="btn-ghost">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
       </a>
-      <a href="https://book-shelf-k48i.onrender.com/" class="btn-primary">
+      <a href="#" class="btn-primary">
         Live Demo
         <span>→</span>
       </a>
@@ -497,16 +497,16 @@
   <p class="section-label">— Screenshots</p>
   <div class="screenshots-grid">
     <div class="screenshot-item" onclick="openLightbox(this)">
-      <img src="/sreeman-portfolio/assets/project_imgs/bookshelf/library_view.png" alt="Bookshelf library view" />
-      <div class="screenshot-overlay"><span>Library View</span></div>
+      <img src="#" alt="Bookshelf library view" />
+      <div class="screenshot-overlay"><span>Gallery View</span></div>
     </div>
     <div class="screenshot-item" onclick="openLightbox(this)">
-      <img src="/sreeman-portfolio/assets/project_imgs/bookshelf/Add_book.png" alt="Add a book form" />
-      <div class="screenshot-overlay"><span>Add a Book</span></div>
+      <img src="#" alt="Add a book form" />
+      <div class="screenshot-overlay"><span>Add Post</span></div>
     </div>
     <div class="screenshot-item" onclick="openLightbox(this)">
-      <img src="/sreeman-portfolio/assets/project_imgs/bookshelf/edit_boOk.png" alt="Edit book form" />
-      <div class="screenshot-overlay"><span>Edit Book</span></div>
+      <img src="#" alt="Edit book form" />
+      <div class="screenshot-overlay"><span>Edit Post</span></div>
     </div>
   </div>
 </section>
@@ -517,12 +517,14 @@
     <p class="section-label">— The Problem</p>
     <h2>Why I <span class="accent">built</span> this</h2>
     <p>
-      Managing a personal book collection across scattered notes, apps, and memory is messy.
-      Bookshelf solves this by giving readers one clean place to store every book they've read —
-      with ratings, personal reviews, and auto-fetched covers.
-      <br><br>
-      It's also a way to share reading recommendations with other students and book enthusiasts
-      who can browse your shelf and discover their next read.
+    Artists often struggle to present their work in a structured and meaningful way. 
+    Most platforms focus only on final outputs, ignoring the creative journey behind them.
+    <br><br>
+    Artfolio solves this by providing a dedicated space where artists can showcase their artwork,
+    document their creative process, and build a personal portfolio that reflects both their skills and their story.
+    <br><br>
+    It also creates an environment where viewers can explore different artworks, 
+    discover creators, and get inspired by how each piece comes to life.
     </p>
   </div>
 
@@ -564,15 +566,11 @@
       <div class="tech-role">Templating</div>
     </div>
     <div class="tech-card">
-      <div class="tech-name">Axios</div>
-      <div class="tech-role">HTTP Client</div>
+      <div class="tech-name">Cloudinary</div>
+      <div class="tech-role">Image Handling</div>
     </div>
     <div class="tech-card">
-      <div class="tech-name">Open Library</div>
-      <div class="tech-role">Book Cover API</div>
-    </div>
-    <div class="tech-card">
-      <div class="tech-name">CSS3</div>
+      <div class="tech-name">CSS</div>
       <div class="tech-role">Styling</div>
     </div>
     <div class="tech-card">
@@ -588,7 +586,7 @@
     <h2>See the<br>source code</h2>
     <p>Full codebase available on GitHub</p>
   </div>
-  <a href="https://github.com/sreeman-dyageti/book-shelf_project" target="_blank" class="btn-white">
+  <a href="https://github.com/sreeman-dyageti/art_gallery" target="_blank" class="btn-white">
     View on GitHub →
   </a>
 </section>
