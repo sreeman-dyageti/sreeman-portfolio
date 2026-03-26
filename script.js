@@ -312,3 +312,28 @@ function type() {
 
 // start after hero animation finishes
 setTimeout(type, 1800);
+
+// ── ACTIVE NAV ON SCROLL
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-desktop a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+
+  sections.forEach(section => {
+    const sectionTop    = section.offsetTop - 120;
+    const sectionHeight = section.offsetHeight;
+
+    if (window.scrollY >= sectionTop &&
+        window.scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navItems.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});

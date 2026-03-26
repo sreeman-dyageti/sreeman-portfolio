@@ -73,6 +73,8 @@ nav {
   background: var(--accent);
   transition: width 0.3s ease;
 }
+.nav-desktop a.active { color: var(--accent); }
+.nav-desktop a.active::after { width: 100%; }
 
 .nav-desktop a:hover { color: var(--accent); }
 .nav-desktop a:hover::after { width: 100%; }
@@ -222,6 +224,17 @@ nav {
 
 .hero-cta:hover .arrow {
   transform: translateX(5px);
+}
+/* ── TYPING CURSOR ── */
+.typed-cursor {
+  font-weight: 300;
+  color: var(--accent);
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 /* ── WORK ── */
@@ -941,14 +954,3 @@ footer {
   }
 }
 
-/* ── TYPING CURSOR ── */
-.typed-cursor {
-  font-weight: 300;
-  color: var(--accent);
-  animation: blink 0.8s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
