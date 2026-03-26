@@ -269,3 +269,46 @@ document.querySelectorAll('.nav-close').forEach(link => {
     spans.forEach(s => s.style.background = '#1a1a1a');
   });
 });
+
+// ── TYPING ANIMATION
+const typedEl = document.querySelector('.typed-text');
+const phrases = [
+  'Node.js · Express · PostgreSQL · React',
+  'I build scalable backends.',
+  'I ship products that work.',
+  'I also draw.'
+];
+
+let phraseIndex = 0;
+let charIndex   = 0;
+let isDeleting  = false;
+let typingTimer;
+
+function type() {
+  const current = phrases[phraseIndex];
+
+  if (isDeleting) {
+    typedEl.textContent = current.slice(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typedEl.textContent = current.slice(0, charIndex + 1);
+    charIndex++;
+  }
+
+  let speed = isDeleting ? 40 : 70;
+
+  if (!isDeleting && charIndex === current.length) {
+    // pause at end
+    speed = 1800;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    speed = 400;
+  }
+
+  typingTimer = setTimeout(type, speed);
+}
+
+// start after hero animation finishes
+setTimeout(type, 1800);
