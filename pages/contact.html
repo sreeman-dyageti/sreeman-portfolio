@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work With Me — Sreeman Dyageti</title>
+    <style>
+      
+    </style>
 </head>
 <body>
 
@@ -86,6 +89,43 @@
         <button class="btn-next" onclick="nextStep()">Next <span>→</span></button>
     </div>
     </div>
+          <!-- STEP 2 — What do you need? -->
+      <div class="step" id="step-1">
+        <div>
+          <h2 class="step-heading">What do you <span class="accent">need?</span></h2>
+        </div>
+        <div class="option-cards">
+          <label class="option-card" onclick="selectOption(this)">
+            <input type="radio" name="project-type" value="Backend API" />
+            <div class="option-icon"></div>
+            <div class="option-title">Backend / API</div>
+            <div class="option-desc">Node.js, Express, REST APIs</div>
+          </label>
+          <label class="option-card" onclick="selectOption(this)">
+            <input type="radio" name="project-type" value="Full Stack App" />
+            <div class="option-icon"></div>
+            <div class="option-title">Full Stack App</div>
+            <div class="option-desc">End-to-end web application</div>
+          </label>
+          <label class="option-card" onclick="selectOption(this)">
+            <input type="radio" name="project-type" value="Database Design" />
+            <div class="option-icon"></div>
+            <div class="option-title">Database Design</div>
+            <div class="option-desc">PostgreSQL schema & queries</div>
+          </label>
+          <label class="option-card" onclick="selectOption(this)">
+            <input type="radio" name="project-type" value="Other" />
+            <div class="option-icon"></div>
+            <div class="option-title">Something Else</div>
+            <div class="option-desc">Let's figure it out</div>
+          </label>
+        </div>
+        <div class="form-nav">
+          <button class="btn-prev" onclick="prevStep()">← Back</button>
+          <button class="btn-next" onclick="nextStep()">Next <span>→</span></button>
+        </div>
+      </div>
+
 
     
 </body>
