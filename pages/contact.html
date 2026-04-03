@@ -76,8 +76,7 @@
       padding: 1.5rem 3rem;
       z-index: 400;
       background: rgba(245,240,232,0.92);
-      backdrop-filter: blur(10px);
-      mix-blend-mode: difference;
+      backdrop-filter: blur(200px);
       border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     .nav-logo {
@@ -291,6 +290,7 @@
       width: 100%;
       transition: border-color 0.3s ease, background 0.3s ease;
       outline: none;
+      appearance: none;
       -webkit-appearance: none;
     }
     .field-input::placeholder,
@@ -352,6 +352,7 @@
       margin-bottom: 0.5rem;
     }
     .budget-slider {
+      appearance: none;
       -webkit-appearance: none;
       width: 100%;
       height: 3px;
@@ -361,6 +362,7 @@
       cursor: pointer;
     }
     .budget-slider::-webkit-slider-thumb {
+      appearance: none;
       -webkit-appearance: none;
       width: 20px; height: 20px;
       background: var(--accent);
